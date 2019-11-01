@@ -23,6 +23,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                INFOS ZUM DRUCK                    %%
 %% Auf richtig konfigurierten Druckertreiber achten  %%
+%%      Auf CX510: Farbkorrektur einschalten         %%
 %%      Duplex, an __kurzer__ Kante spiegeln         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,6 +70,29 @@
 		\input{faq/faq_medizininfo.tex}
 		\column[c]{0.45\textwidth}
 		\input{faq/faq_medieninfo.tex}		
+	\end{columns}
+
+		\newpage 
+	
+	%% BLATT 1 VORDERSEITE
+	%% Kogni und Lehramt Infotexte
+	\begin{columns}
+		\column[c]{0.45\textwidth}
+		\input{poster/poster_kogni.tex}
+		\column[c]{0.45\textwidth}
+		\input{poster/poster_lehramt.tex}
+	\end{columns}
+	
+	\newpage 
+	%% BLATT 2 RÜCKSEITE
+	%% Lehramt und Kogni FAQ
+	%% Absichtlich falschrum!
+	
+	\begin{columns}
+		\column[c]{0.45\textwidth}
+		\input{faq/faq_lehramt.tex}
+		\column[c]{0.45\textwidth}
+		\input{faq/faq_kogni.tex}		
 	\end{columns}
 	
 
