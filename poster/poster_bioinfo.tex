@@ -1,24 +1,103 @@
-	\begin{Huge}
-				Bioinformatik
-			\end{Huge}
-			\begin{exampleblock}{\textcolor{white}{Was ist der Studiengang?}}
-				Grob gesagt die Schnittstelle zwischen dem Chemiker im Labor und der Datenverarbeitung am Rechner. Mögliche Schwerpunkte gehen in Richtung automatisierte Verarbeitung von DNA-Daten, Drug Design, Krebsforschung etc.
-				Das Studium beinhaltet neben der klassischen Informatik Inhalte aus Molekularbiologie, Neurobiologie, Biochemie und Chemie. Ein Schwerpunktfach gibt es nicht. Danach kann das Studium mit einem Master (4 Semester Regelstudienzeit) weitergeführt werden.
-			\end{exampleblock}
-			\begin{block}{Welcher Teil macht wie viel im Studium aus?}
-				\begin{figure}[h!]
-						\includegraphics[width=0.4\textwidth]{charts/bioinformatik-Piechart.pdf}
-					\caption{Verteilung der Themenbereiche über das komplette Studium}
-				\end{figure}
-			\end{block}
-		\begin{block}{Was macht man in welchem Semester?}
-			\begin{figure}[h!]
-					\includegraphics[width=\textwidth]{charts/bioinformatik-Studienplan_abWS18.pdf}
-			\end{figure}
-		Das 1. Semester ist nach Plan ein Wintersemester. Wenn du dein Studium zum Sommersemester beginnen möchtest, beginnst du im Plan bei Semester 2 und machst dann Semester 1. 
-		Dieser Verlauf ist unabhängig vom Studienbeginn nur ein Vorschlag und kein bindender Studienplan. Es empfiehlt sich jedoch, den Plan einzuhalten, wenn man in Regelstudienzeit studieren möchte.
-		\end{block}
-	\vfill
-	\begin{flushright}
-		\includegraphics[width=0.4\textwidth]{fsilogo.pdf}
-	\end{flushright}
+\colorlet{lebenswiss}{andere}
+\DTLsetpiesegmentcolor{1}{info}
+\DTLsetpiesegmentcolor{2}{mathe}
+\DTLsetpiesegmentcolor{3}{bioinfo}
+\DTLsetpiesegmentcolor{4}{lebenswiss}
+\DTLsetpiesegmentcolor{5}{sq}
+
+\begin{Huge}
+    Bioinformatik
+\end{Huge}
+
+\begin{exampleblock}{\textcolor{white}{Was ist der Studiengang?}}
+    Grob gesagt die Schnittstelle zwischen dem Chemiker im Labor und der Datenverarbeitung am Rechner. Mögliche Schwerpunkte gehen in Richtung automatisierte Verarbeitung von DNA-Daten, Drug Design, Krebsforschung etc.
+    Das Studium beinhaltet neben der klassischen Informatik Inhalte aus Molekularbiologie, Neurobiologie, Biochemie und Chemie. Ein Schwerpunktfach gibt es nicht. Danach kann das Studium mit einem Master (4 Semester Regelstudienzeit) weitergeführt werden.
+\end{exampleblock}
+
+\begin{block}{Welcher Teil macht wie viel im Studium aus?}
+    \begin{figure}[h!]
+        \begin{minipage}{\linewidth}
+            \centering
+            \DTLloaddb{LPverteilungBio}{inhalte/bioinfo.csv}
+            \tikzstyle{every node}=[text width={},minimum height=0pt]
+            \DTLpiechart{
+                variable=\lp,
+                innerlabel={\parbox{40pt}{\centering\color{white} \bereich}},
+                innerratio=0.25,
+                radius=70pt,
+                rotateinner}{LPverteilungBio}{\bereich=Bereich,\lp=LP}
+        \end{minipage}
+        \vspace{-20pt}
+	\caption{Verteilung der Themenbereiche über das komplette Studium}
+    \end{figure}
+\end{block}
+
+\begin{block}{Was macht man in welchem Semester?}
+    \begin{figure}[h!]
+        % \includegraphics[width=\textwidth]{charts/bioinformatik-Studienplan_abWS18.pdf}
+	% \includegraphics[width=\textwidth]{new/bio_table.png}
+        \resizebox{\linewidth}{!}{
+        \begin{minipage}{\textwidth}
+            % \small
+            \begin{tikzpicture}
+                \begin{scope}[start chain=going below,node distance=\nodedistancecorrection]
+                    \semester{1}
+                    \veranstaltung{9}{Praktische In\-for\-ma\-tik~1}{info}
+                    \veranstaltung{9}{Mathe\-matik f. Informatik~1}{mathe}
+                    \veranstaltung{6}{Biomoleküle und Zelle}{lebenswiss}
+                    \veranstaltung{9}{Anorg. und Org. Chemie}{lebenswiss}
+                    \SumLP{33}
+                \end{scope}
+                \begin{scope}[xshift=1\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+                    \semester{2}
+                    \veranstaltung{9}{Praktische In\-for\-ma\-tik~2}{info}
+                    \veranstaltung{9}{Mathe\-matik~f. Informatik~2}{mathe}
+                    \veranstaltung{3}{Einf. Bioinformatik}{bioinfo}
+                    \veranstaltung{3}{Biochemie}{lebenswiss}
+                    \veranstaltung{3}{übK}{sq}
+                    \SumLP{27}
+                \end{scope}
+                \begin{scope}[xshift=2\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+                    \semester{3}
+                    \veranstaltung{9}{Theoretische Informatik 1}{info}
+                    \veranstaltung{6}{Praktische Informatik 3}{info}
+                    \veranstaltung{9}{Mathe\-matik~f. Informatik 3}{mathe}
+                    \veranstaltung{9}{Neurobiologie}{lebenswiss}
+                    \SumLP{33}
+                \end{scope}
+                \begin{scope}[xshift=3\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+                    \semester{4}
+                    \veranstaltung{9}{The\-o\-re\-ti\-sche Informatik 2}{info}
+                    \veranstaltung{6}{Stochastik}{mathe}
+                    \veranstaltung{9}{Grundlagen der Bioinformatik}{bioinfo}
+                    \veranstaltung{9}{übK: Teamprojekt}{sq}
+                    \SumLP{33}
+                \end{scope}
+                \begin{scope}[xshift=4\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+                    \semester{5}
+                    \veranstaltung{6}{Wahlpflicht Informatik}{info}
+                    \veranstaltung{6}{Physikalische Chemie}{lebenswiss}
+                    \veranstaltung{6}{Molekular-Biologie}{lebenswiss}
+                    \veranstaltung{6}{WP Lebenswiss\-schaften}{lebenswiss}
+                    \veranstaltung{3}{übK: Proseminar}{sq}
+                    \SumLP{27}
+                \end{scope}
+                \begin{scope}[xshift=5\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+                    \semester{6}
+                    \veranstaltung{6}{WP Bioinformatik}{bioinfo}
+                    \veranstaltung{6}{übK}{sq}
+                    \veranstaltung{15}{Bachelor\-arbeit}{bioinfo}
+                    \SumLP{27}
+                \end{scope}
+            \end{tikzpicture}
+        \end{minipage}}
+    \end{figure}
+
+    Das 1. Semester ist nach Plan ein Wintersemester. Wenn du dein Studium zum Sommersemester beginnen möchtest, beginnst du im Plan bei Semester 2 und machst dann Semester 1. 
+    Dieser Verlauf ist unabhängig vom Studienbeginn nur ein Vorschlag und kein bindender Studienplan. Es empfiehlt sich jedoch, den Plan einzuhalten, wenn man in Regelstudienzeit studieren möchte.
+\end{block}
+
+\vfill
+\begin{flushright}
+    \includegraphics[width=0.4\textwidth]{images/fsilogo.pdf}
+\end{flushright}
