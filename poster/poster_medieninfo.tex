@@ -15,6 +15,7 @@
 
 \begin{block}{Welcher Teil macht wie viel im Studium aus?}
     \begin{figure}[h!]
+        \vspace{-10pt}
         \begin{minipage}{\linewidth}
             \centering
             \DTLloaddb{LPverteilungMedien}{inhalte/medieninfo.csv}
@@ -31,10 +32,10 @@
 \end{block}
 
 \begin{block}{Was macht man in welchem Semester?}
+    \vspace{-10pt}
     \begin{figure}[h!]
         \resizebox{\linewidth}{!}{
         \begin{minipage}{\textwidth}
-            \small
             \begin{tikzpicture}
                 \begin{scope}[start chain=going below,node distance=\nodedistancecorrection]
                     \semester{1}
