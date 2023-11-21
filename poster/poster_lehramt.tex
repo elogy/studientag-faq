@@ -1,24 +1,101 @@
-	\begin{Huge}
-			Informatik (Bachelor of Education)
-		\end{Huge}
-		\begin{exampleblock}{\textcolor{white}{Was ist der Studiengang?}}
-			Sozusagen der erste Teil des früheren "`Auf Lehramt"'. Ähnelt zunächst dem Informatik B.Sc.-Studium, beinhaltet aber weniger reine Informatik, dafür Module aus den Bildungswissenschaften und der Fachdidaktik. Außerdem muss man mindestens ein zweites Fach wählen, das man später unterrichten möchte.
-		\end{exampleblock}
-	
-	\begin{block}{Welcher Teil macht wie viel im Studium aus?}
-		\begin{figure}[h!]
-			\includegraphics[width=0.4\textwidth]{images/lehramt_informatik_piechartonly.pdf}
-			\caption{Verteilung der Themenbereiche über das komplette Studium}
-		\end{figure}
-	\end{block}
-	
-	\begin{block}{Was macht man in welchem Semester?}
-		\begin{figure}[h!]
-			\includegraphics[width=\textwidth]{images/lehramt_informatik_Studienplanonly.pdf}
-		\end{figure}
-		Das 1. Semester ist nach Plan ein Wintersemester. Wenn du dein Studium zum Sommersemester beginnen möchtest, beginnst du im Plan bei Semester 2 und machst dann Semester 1. 
-		Dieser Verlauf ist unabhängig vom Studienbeginn nur ein Vorschlag und kein bindender Studienplan. Es empfiehlt sich jedoch, den Plan einzuhalten, wenn man in Regelstudienzeit studieren möchte.
-	\end{block}
+\colorlet{didaktik}{fsiblue}
+\colorlet{ba}{kogni}
+\colorlet{bildungswiss}{bioinfo}
+\DTLsetpiesegmentcolor{1}{info}
+\DTLsetpiesegmentcolor{2}{mathe}
+\DTLsetpiesegmentcolor{3}{didaktik}
+\DTLsetpiesegmentcolor{4}{bildungswiss}
+\DTLsetpiesegmentcolor{5}{andere}
+\DTLsetpiesegmentcolor{6}{ba}
+
+\begin{Huge}
+	  Informatik (Bachelor of Education)
+\end{Huge}
+
+\begin{exampleblock}{\textcolor{white}{Was ist der Studiengang?}}
+  Sozusagen der erste Teil des früheren "`Auf Lehramt"'. Ähnelt zunächst dem Informatik B.Sc.-Studium, beinhaltet aber weniger reine Informatik, dafür Module aus den Bildungswissenschaften und der Fachdidaktik. Außerdem muss man mindestens ein zweites Fach wählen, das man später unterrichten möchte.
+\end{exampleblock}
+
+\begin{block}{Welcher Teil macht wie viel im Studium aus?}
+	\begin{figure}[h!]
+		\vspace{-10pt}
+		\begin{minipage}{\linewidth}
+				\centering
+				\DTLloaddb{LPverteilungBEd}{inhalte/lehramt.csv}
+				\tikzstyle{every node}=[text width={},minimum height=0pt]
+				\DTLpiechart{
+						variable=\lp,
+						innerlabel={\parbox{40pt}{\centering\color{white} \bereich}},
+						innerratio=0.35,
+						radius=70pt,
+						rotateinner}{LPverteilungBEd}{\bereich=Bereich,\lp=LP}
+		\end{minipage}
+		\vspace{-20pt}
+		\caption{Verteilung der Themenbereiche über das komplette Studium}
+	\end{figure}
+\end{block}
+
+\begin{block}{Was macht man in welchem Semester?}
+	\vspace{-10pt}
+	\begin{figure}[h!]
+		\resizebox{\linewidth}{!}{
+		\begin{minipage}{\textwidth}
+				\begin{tikzpicture}
+						\begin{scope}[start chain=going below,node distance=\nodedistancecorrection]
+								\semester{1}
+								\veranstaltung{9}{Praktische In\-for\-ma\-tik~1}{info}
+								\veranstaltung{6}{Technische In\-for\-ma\-tik~1}{info}
+								\veranstaltung{12}{Zweites Fach}{andere}
+								\veranstaltung{3}{BWS I-I}{bildungswiss}
+								\SumLP{30}
+						\end{scope}
+						\begin{scope}[xshift=1\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+								\semester{2}
+								\veranstaltung{9}{Praktische In\-for\-ma\-tik~2}{info}
+								\veranstaltung{3}{Fachdidaktik~1}{didaktik}
+								\veranstaltung{15}{Zweites Fach}{andere}
+								\veranstaltung{3}{BWS I-II}{bildungswiss}
+								\SumLP{30}
+						\end{scope}
+						\begin{scope}[xshift=2\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+								\semester{3}
+								\veranstaltung{6}{Praktische Informatik 3}{info}
+								\veranstaltung{9}{Mathematik f. Informatik 1}{mathe}
+								\veranstaltung{12}{Zweites Fach}{andere}
+								\veranstaltung{3}{BWS II-I}{bildungswiss}
+								\SumLP{30}
+						\end{scope}
+						\begin{scope}[xshift=3\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+								\semester{4}                
+								\veranstaltung{9}{The\-o\-re\-ti\-sche Informatik~2}{info}
+								\veranstaltung{6}{Fachdidaktik~2}{didaktik}
+								\veranstaltung{12}{Zweites Fach}{andere}
+								\veranstaltung{3}{BWS II-II}{bildungswiss} 
+								\SumLP{30}
+						\end{scope}
+						\begin{scope}[xshift=4\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+								\semester{5}
+								\veranstaltung{9}{Theoretische Informatik 1}{info}
+								\veranstaltung{3}{WP Informatik}{info}
+								\veranstaltung{18}{Zweites Fach}{andere}
+								\SumLP{30}
+						\end{scope}
+						\begin{scope}[xshift=5\lpwidth,start chain=going below,node distance=\nodedistancecorrection]
+								\semester{6}
+								\veranstaltung{9}{Technische Informatik 2}{info}
+								\veranstaltung{3}{WP Informatik}{info}
+								\veranstaltung{12}{Zweites Fach}{andere}
+								\veranstaltung{6}{Bachelor\-arbeit}{ba}
+								\SumLP{30}
+						\end{scope}
+				\end{tikzpicture}
+		\end{minipage}}  
+	\end{figure}
+
+	Das 1. Semester ist nach Plan ein Wintersemester. Wenn du dein Studium zum Sommersemester beginnen möchtest, beginnst du im Plan bei Semester 2 und machst dann Semester 1. 
+Dieser Verlauf ist unabhängig vom Studienbeginn nur ein Vorschlag und kein bindender Studienplan. Es empfiehlt sich jedoch, den Plan einzuhalten, wenn man in Regelstudienzeit studieren möchte.
+\end{block}
+
 \vfill
 \begin{flushright}
 	\includegraphics[width=0.4\textwidth]{images/fsilogo.pdf}
